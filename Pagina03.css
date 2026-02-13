@@ -31,7 +31,7 @@ h2{
 }
 
 .card-audio {
-    background-color: #8e247a; 
+    background-color: #152476; 
     border-radius: 12px;
     padding: 15px 13px;
     margin-bottom: 12px;
@@ -47,7 +47,7 @@ h2{
 }
 
 .card-audio:hover {
-    background-color: #bd5aab;
+    background-color: #2832ca;
 }
 
 .card-audio:active {
@@ -56,12 +56,12 @@ h2{
 
 .card-audio.ativo {
     background-color: #ffffff;
-    border: 1px solid #8e247a;
+    border: 1px solid #152476;
 }
 
 /* Como o card deve ficar quando estiver tocando */
 .card-audio.ativo {
-    background-color: #a3348e; /* Um roxo levemente mais claro que o original */
+    background-color: #4424ba; /* Um roxo levemente mais claro que o original */
     border: 1px solid #ffffff;
     transform: scale(1.02); /* Dá um leve destaque */
 }
@@ -103,11 +103,11 @@ h2{
 }
 
 #titulo-rodape { font-size: 14px; font-weight: bold; }
-.artista-rodape { font-size: 11px; color: #8e247a; }
+.artista-rodape { font-size: 11px; color: #152476; }
 
 .footer-controls button {
     background: none;
-    border: 2px solid #8e247a;
+    border: 2px solid #152476;
     border-radius: 50%;
     color: white;
     width: 35px;
@@ -136,7 +136,7 @@ main {
 .bar {
     width: 3px;
     height: 4px;
-    background-color: #8e247a;
+    background-color: #152476;
     border-radius: 2px;
     transition: height 0.2s;
 }
@@ -146,7 +146,16 @@ main {
     gap: 10px;
     font-family: 'Courier New', Courier, monospace; /* Estilo terminal/dev */
     font-size: 12px;
-    color: #8e247a;
+    color: #152476;
+}
+
+.pagina1{
+    border: 2px solid #8e247a;
+    color: black;
+    padding: 0.4em;
+    background-color: #8e247a;
+    border-radius: 7px;
+    font-family: "Source Serif 4", serif;
 }
 
 .pagina2{
@@ -154,15 +163,6 @@ main {
     color: black;
     padding: 0.4em;
     background-color: rgb(20, 113, 20);
-    border-radius: 7px;
-    font-family: "Source Serif 4", serif;
-}
-
-.pagina3{
-    border: 2px solid #152476;
-    color: black;
-    padding: 0.4em;
-    background-color: #152476;
     border-radius: 7px;
     font-family: "Source Serif 4", serif;
 }
