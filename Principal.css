@@ -115,6 +115,7 @@ h2{
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    margin-left: 4em;
 }
 
 /* Espaço no fundo para o footer não cobrir o último card */
