@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap');
+
+body{
+    background-color: rgb(19, 15, 15);
+    color: white;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+    font-family: "Source Serif 4", serif;
+}
+
+figure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h3{
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: -2.2em;
+    font-family: "Source Serif 4", serif;
+}
+
+h2{
+    margin-top: 35px;
+    text-align: center;
+    font-family: "Source Serif 4", serif;
+}
+
+.card-audio {
+    background-color: #8e247a; 
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer; 
+    transition: transform 0.2s, background-color 0.3s;
+    user-select: none; 
+    font-size: 21px;
+}
+
+.card-audio:hover {
+    background-color: #bd5aab;
+}
+
+.card-audio:active {
+    transform: scale(0.98);
+}
+
+.card-audio.ativo {
+    background-color: #ffffff;
+    border: 1px solid #8e247a;
+}
+
+/* Como o card deve ficar quando estiver tocando */
+.card-audio.ativo {
+    background-color: #a3348e; /* Um roxo levemente mais claro que o original */
+    border: 1px solid #ffffff;
+    transform: scale(1.02); /* Dá um leve destaque */
+}
+
+/* Garante que o texto dentro do card ativo continue branco */
+.card-audio.ativo .titulo, 
+.card-audio.ativo .numero, 
+.card-audio.ativo .seta {
+    color: white !important;
+}
+
+.player-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;
+    background-color: #121212;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    box-sizing: border-box;
+    z-index: 999;
+}
+
+.footer-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 40%; /* Garante espaço para o texto */
+}
+
+.footer-text p {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#titulo-rodape { font-size: 14px; font-weight: bold; }
+.artista-rodape { font-size: 11px; color: #8e247a; }
+
+.footer-controls button {
+    background: none;
+    border: 2px solid #8e247a;
+    border-radius: 50%;
+    color: white;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Espaço no fundo para o footer não cobrir o último card */
+main {
+    padding-bottom: 110px;
+}
+
+/* Animação das barras */
+.visualizer {
+    display: flex;
+    align-items: flex-end; /* Barras crescem para cima */
+    gap: 3px;
+    height: 20px;
+}
+
+.bar {
+    width: 3px;
+    height: 4px;
+    background-color: #8e247a;
+    border-radius: 2px;
+    transition: height 0.2s;
+}
+
+.time-controls {
+    display: flex;
+    gap: 10px;
+    font-family: 'Courier New', Courier, monospace; /* Estilo terminal/dev */
+    font-size: 12px;
+    color: #8e247a;
+}

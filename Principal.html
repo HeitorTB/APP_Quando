@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APP</title>
+    <link rel="stylesheet" href="Principal.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Playlist #1</h1>
+    </header>
+    
+    <main>
+        
+        <figure>
+            <img src="Imagens/Foto_Principal.png" alt="Foto da Playlist">
+        </figure>
+       
+        <h2>Escute-me quando...</h2>
+        <h3>Artista: Heitor Brasil</h3>
+
+        <div class="card-audio" onclick="trocarAudio('audio1.mp3', this)">
+            <div class="texto-container">
+                <span class="numero">1.</span>
+                <span class="titulo">Quando estiver com saudade</span>
+            </div>
+            <span class="seta">></span>
+        </div>
+
+        <div class="card-audio" onclick="trocarAudio('triste.mp3', this)">
+            <div class="texto-container">
+                <span class="numero">2.</span>
+                <span class="titulo">Quando estiver triste</span>
+            </div>
+            <span class="seta">></span>
+        </div>
+
+        <div class="card-audio" onclick="trocarAudio('feliz.mp3', this)">
+            <div class="texto-container">
+                <span class="numero">3.</span>
+                <span class="titulo">Quando estiver feliz</span>
+            </div>
+            <span class="seta">></span>
+        </div>
+
+        <div class="card-audio" onclick="trocarAudio('tedio.mp3', this)">
+            <div class="texto-container">
+                <span class="numero">4.</span>
+                <span class="titulo">Quando estiver com tedio</span>
+            </div>
+            <span class="seta">></span>
+        </div>
+
+        <div class="card-audio" onclick="trocarAudio('poema.mp3', this)">
+            <div class="texto-container">
+                <span class="numero">5.</span>
+                <span class="titulo">Quando quiser um poema</span>
+            </div>
+            <span class="seta">></span>
+        </div>
+
+        <audio id="player-principal" src="" preload="auto" playsinline></audio>
+
+    </main>
+
+    <footer class="player-footer">
+        
+        <div class="footer-left">
+            <div class="footer-text">
+                <p id="titulo-rodape">Selecione um áudio</p>
+                <p class="artista-rodape">Heitor Brasil</p>
+            </div>
+        </div>
+
+        <div class="footer-controls">
+            <button id="btn-play-pause" onclick="togglePlay()">
+                <span id="icon-play">II</span> </button>
+        </div>
+
+        <div class="footer-player-container">
+            <div class="time-controls">
+                <span id="tempo-atual">0:00</span>
+                <span id="tempo-restante">-0:00</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const player = document.getElementById('player-principal');
+        const btnPlayPause = document.getElementById('btn-play-pause');
+        const iconPlay = document.getElementById('icon-play');
+        const footer = document.querySelector('.player-footer');
+
+        function trocarAudio(arquivo, elemento) {
+            const todosCards = document.querySelectorAll('.card-audio');
+            const tituloRodape = document.getElementById('titulo-rodape');
+
+            // 1. Destaque visual do card
+            todosCards.forEach(c => c.classList.remove('ativo'));
+            elemento.classList.add('ativo');
+
+            // 2. Atualiza o rodapé
+            tituloRodape.innerText = elemento.querySelector('.titulo').innerText;
+
+            // 3. Toca o arquivo
+            player.src = "Audios/" + arquivo;
+            player.play();
+                    
+            iconPlay.innerText = "II"; 
+        }
+
+        function togglePlay() {
+            if (player.src === "" || player.src.endsWith('/')) return; // Evita erro se não houver áudio
+
+            if (player.paused) {
+                player.play();
+                iconPlay.innerText = "II";
+                footer.classList.add('animar');
+            } else {
+                player.pause();
+                iconPlay.innerText = "►";
+                footer.classList.remove('animar');
+            }
+        }
+
+        // IMPORTANTE: Detecta quando o áudio acaba sozinho
+        player.onended = () => {
+            footer.classList.remove('animar');
+            iconPlay.innerText = "►";
+            // Opcional: tirar o destaque do card quando a música acabar
+            document.querySelectorAll('.card-audio').forEach(c => c.classList.remove('ativo'));
+        };
+
+        function formatarTempo(segundos) {
+            const min = Math.floor(segundos / 60);
+            const seg = Math.floor(segundos % 60);
+            return `${min}:${seg < 10 ? '0' : ''}${seg}`;
+        }
+
+        // Evento que atualiza o tempo na tela
+        player.ontimeupdate = function() {
+            const tempoAtual = document.getElementById('tempo-atual');
+            const tempoRestante = document.getElementById('tempo-restante');
+
+            if (!isNaN(player.duration)) {
+                // Atualiza tempo percorrido
+                tempoAtual.innerText = formatarTempo(player.currentTime);
+                
+                // Atualiza quanto falta (duração total - tempo atual)
+                const falta = player.duration - player.currentTime;
+                tempoRestante.innerText = "-" + formatarTempo(falta);
+            }
+        };
+    
+    </script>
+
+</body>
+</html>
